@@ -23,21 +23,13 @@ public class NASAFacility {
                         case 'd' -> {
                             room[i][j] = '-';
                             if (i < room.length - 1) {
-                                if (room[i + 1][j] == '-') {
-                                    changes.add(new Change(i + 1, j, 'd'));
-                                } else {
-                                    return steps;
-                                }
+                                changes.add(new Change(i + 1, j, 'd'));
                             }
                         }
                         case 'r' -> {
                             room[i][j] = '-';
-                            if (i < room[0].length - 1) {
-                                if (room[i][j + 1] == '-') {
-                                    changes.add(new Change(i, j + 1, 'r'));
-                                } else {
-                                    return steps;
-                                }
+                            if (j < room[0].length - 1) {
+                                changes.add(new Change(i, j + 1, 'r'));
                             }
                         }
                         case 'l' -> {
@@ -52,19 +44,20 @@ public class NASAFacility {
                         }
                     }
 
-                    for (Change temp : changes) {
-                        if (temp.getX() == i && temp.getY() == j) {
+                    for (int k = 0; k < changes.size(); k++) {
+                        if (changes.get(k).getX() == i && changes.get(k).getY() == j) {
                             if (room[i][j] == '-') {
-                                room[i][j] = temp.getChar();
+                                room[i][j] = changes.get(k).getChar();
+                                changes.remove(k--);
                             } else {
                                 return steps;
                             }
                         }
                     }
+
                 }
             }
         }
-
         return -1;
     }
 
