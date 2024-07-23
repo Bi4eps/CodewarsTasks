@@ -5,7 +5,7 @@ import org.example.tasks.NASAFacility;
 public class Main {
     public static void main(String[] args) {
         System.out.println(NASAFacility.collision(new char[][]{{'-', '-'}, {'-', '-'}}));
-        System.out.println(NASAFacility.collision(new char[][]{{'l', 'l'}, {'u', '-'}}));
+        System.out.println(NASAFacility.collision(new char[][]{{'r', '-'}, {'u', 'u'}}));
 
         /*char[][] room = new char[2][5];
         for (int i = 0; i < room.length; i++) {
