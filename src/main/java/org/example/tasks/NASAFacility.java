@@ -23,13 +23,21 @@ public class NASAFacility {
                         case 'd' -> {
                             room[i][j] = '-';
                             if (i < room.length - 1) {
-                                changes.add(new Change(i + 1, j, 'd'));
+                                if (room[i + 1][j] == 'u') {
+                                    return steps;
+                                } else {
+                                    changes.add(new Change(i + 1, j, 'd'));
+                                }
                             }
                         }
                         case 'r' -> {
                             room[i][j] = '-';
                             if (j < room[0].length - 1) {
-                                changes.add(new Change(i, j + 1, 'r'));
+                                if (room[i][j + 1] == 'l') {
+                                    return steps;
+                                } else {
+                                    changes.add(new Change(i, j + 1, 'r'));
+                                }
                             }
                         }
                         case 'l' -> {
